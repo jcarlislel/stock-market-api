@@ -2,8 +2,8 @@ name: run-unit-tests
 on: 
   push:
     tags:
-         -"v[0-9]+.[0-9]+_dev"
-         -"v[0-9]+.[0-9]+_prod"
+      - "v[0-9]+.[0-9]+_dev"
+      - "v[0-9]+.[0-9]+_prod"
 
 permissions:
   id-token: write
@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   check_tag_environment:
-    uses: stock-market-api/.github/workflows/check-env.yml
+    uses: stock-market-api/.github/workflows/check-env.yml@main
     secrets: inherit
   
   run_unit_tests:
