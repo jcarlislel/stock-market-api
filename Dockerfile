@@ -1,5 +1,5 @@
 FROM python:3.9-alpine
-LABEL maintaner="jcarlislel"
+LABEL maintainer="jcarlislel"
 
 ENV PYTHONBUFFERED=1
 
@@ -22,12 +22,11 @@ ARG DEV=false
 RUN pip install --upgrade pip && \
     pip install -r /tmp/requirements.txt && \
     if [ $DEV = "true"]; \
-      echo "installing dev requirements~"; \
       then pip install -r /tmp/requirements.dev.txt; \
     fi && \
     rm -rf /tmp && \
     adduser --disabled-password --no-create-home django-user
     
-ENV PATH="/py/bin:$PATH"
+# ENV PATH="/py/bin:$PATH"
 
 USER django-user

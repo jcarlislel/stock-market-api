@@ -1,0 +1,38 @@
+name: run-unit-tests
+on: 
+  workflow_call:
+    outputs:
+      VERSION:
+        value: ${{ jobs.setup_env_outputs.VERSION }}
+      ENVIRONMENT:
+        value: ${{ jobs.setup_env_outputs.ENVIRONMENT }}
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  check_tag_environment:
+    runs-on: ubuntu-20.04
+    outputs:
+      VERSION: ${{ steps.output.outputs.VERSION }}
+      ENVIRONMENT: ${{ steps.output.outputs.ENVIRONMENT }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.7
+        with:
+          fetch-depth: 1
+        
+      - name: Check Env
+        run: |
+          tag=${{ github.ref_name }}
+          
+          IFS='_'
+          read -a strarr <<< $tag
+          echo "Number of split tag ${#strarr[@]}"
+          version=${strarr[0]}
+          environment=${strarr[1]}
+
+          echo VERSION=${version} >> "$GITHUB_ENV" 
+          echo ENVIRONMENT=${environment} >> "$GITHUB_ENV" 
+     
