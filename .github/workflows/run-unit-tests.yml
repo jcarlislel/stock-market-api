@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   check_tag_environment:
-    uses: ./.github/workflows/check-env.yml@latest
+    uses: ./.github/workflows/check-env.yml
     secrets: inherit
   
   run_unit_tests:
