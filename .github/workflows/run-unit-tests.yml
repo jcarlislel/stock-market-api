@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   check_tag_environment:
-    uses: jcarlislel/stock-market-api/.github/workflows/check-env.yml@main
+    uses: ./.github/workflows/check-env.yml@latest
     secrets: inherit
   
   run_unit_tests:
