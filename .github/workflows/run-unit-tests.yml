@@ -2,8 +2,8 @@ name: run-unit-tests
 on: 
   push:
     tags:
-      - "v[0-9]+.[0-19]+_dev"
-      - "v[0-9]+.[0-19]+_prod"
+      - "v[0-9]+.[0-60]+_dev"
+      - "v[0-9]+.[0-60]+_prod"
 
 permissions:
   id-token: write
