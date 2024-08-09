@@ -129,3 +129,6 @@ dmypy.json
 # Pyre type checker
 .pyre/
 docker_creds.txt
+
+# Flake8
+flake8_report.txt
